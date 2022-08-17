@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useCartContext } from "../context/CartContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { ImBin } from "react-icons/im"
 import { Link } from "react-router-dom";
 import { useOrderContext } from "../context/OrdersContext";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import './cartWidget.scss';
+import CustomizedTables from "./Table";
 
 const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
@@ -25,28 +25,7 @@ const CartCheckout = () => {
             <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
         <div className="mt-4">
-            <table className="table text-center container-fluid">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                        <th><button className="bg-danger bgHover rounded" onClick={clearCart}>Clear Cart</button></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cartItems.map(({ name, price, quantity, id }) => (
-                        <tr>
-                            <td><b>{name}</b></td>
-                            <td><b>${price}</b></td>
-                            <td><b>{quantity}</b></td>
-                            <td><b>${price * quantity}</b></td>
-                            <td><ImBin className='text-danger bgHover' onClick={() => removeItem(id)} /></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem}/>
             {removeForm ?
                 <Formik
                     initialValues={{
@@ -116,7 +95,7 @@ const CartCheckout = () => {
                                 <ErrorMessage name="phone" component={() => (<p className="ms-2 text-danger">{errors.phone}</p>)} />
                             </div>
                             <div className="ms-1">
-                                <Button variant="contained" endIcon={<SendIcon />}>Send</Button>
+                                <Button variant="contained" type="submit" endIcon={<SendIcon />}>Send</Button>
                             </div>
                         </Form>
                     )}

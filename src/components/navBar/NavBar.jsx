@@ -29,7 +29,7 @@ const NavBar = ({ setDark, checked }) => {
 
     return (
         <>
-            <nav className="sticky-top navbar navbar-expand-md d-flex flex-nowrap">
+            <nav className="sticky-top navbar navbar-expand-md d-flex flex-nowrap navbar-light bg-white">
                 <div className="container-fluid flex-wrap">
                     <Link to={'/'} className="a_img navbar-brand">
                         <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
@@ -65,13 +65,13 @@ const NavBar = ({ setDark, checked }) => {
                                 <Link to={'/favorites'} className="linkNav active m-2 text-dark">Favorites</Link>
                             </li>
                         </ul>
-                        <ButtonTheme setDark={setDark} checked={checked}/>
                         <div className='d-flex align-items-center me-2'>
                             <Link to={'#'} className='text-black linkNav'>Login/Register</Link>
                             <img id="tamañoUser" src={imgUser.imgUrl} alt={imgUser.alt} />
                         </div>
                     </div>
                 </div>
+                <ButtonTheme setDark={setDark} checked={checked} />
                 <Cart />
             </nav>
         </>

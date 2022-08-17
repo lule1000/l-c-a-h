@@ -2,8 +2,8 @@ import Item from "./Item";
 
 const ItemList = ({ items }) => {
     return (
-        items.map(item => {
-            return <Item key={item.id} imgUrl={item.imgUrl} alt={item.alt} name={item.name} price={item.price} stock={item.stock} id={item.id} />
+        items.map(({id, imgUrl, alt, name, price}) => {
+            return <Item key={id} imgUrl={imgUrl} alt={alt} name={name} price={price} id={id} />
         })
     );
 }

@@ -72,7 +72,7 @@ const ItemListContainer = () => {
         <>
             <div className='d-flex justify-content-center'>
                 <form className="d-flex w-25 mt-2" role="search">
-                    <input className="form-control me-2" onChange={handleChange} value={search} type="search" placeholder="Search" aria-label="Search" />
+                    <input className="form-control me-2" onChange={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
                     <button className="bgHover me-2 rounded" type="submit"><BsSearch /></button>
                 </form>
             </div>

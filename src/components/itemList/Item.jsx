@@ -1,15 +1,22 @@
+import * as React from 'react';
 import { Link } from "react-router-dom";
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const Item = ({ imgUrl, alt, name, price, id }) => {
     return (
-            <Link to={`item/${id}`} className="card border-3 m-2 text-decoration-none text-dark">
-                <img src={imgUrl} className="card-img-top border-bottom" alt={alt} />
-                <div className="card-body">
-                    <h5 className="card-title">{name}</h5>
-                    <p><b>${price}</b></p>
-                </div>
+        <Card className='card border-3 m-2' >
+            <Link to={`item/${id}`} className="">
+                <CardMedia className='border-bottom' component="img" height="240" image={imgUrl} alt={alt} />
             </Link>
+            <CardHeader title={name} />
+            <CardContent>
+                <Typography variant="body5">${price}</Typography>
+            </CardContent>
+        </Card>
     );
 }
-
 export default Item;
