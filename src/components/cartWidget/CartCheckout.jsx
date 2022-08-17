@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { ImBin } from "react-icons/im"
 import { Link } from "react-router-dom";
 import { useOrderContext } from "../context/OrdersContext";
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 import './cartWidget.scss';
 
 const CartCheckout = () => {
@@ -79,7 +81,7 @@ const CartCheckout = () => {
                     }}
                 >
                     {({ errors }) => (
-                        <Form className="formm m-5 d-flex flex-column border">
+                        <Form className="form m-5 d-flex flex-column border p-2">
                             <div className="d-flex flex-column">
                                 <label className="ms-2">Name:</label>
                                 <Field
@@ -113,9 +115,8 @@ const CartCheckout = () => {
                                 />
                                 <ErrorMessage name="phone" component={() => (<p className="ms-2 text-danger">{errors.phone}</p>)} />
                             </div>
-                            <div className="d-flex align-items-center">
-                                <h3 className="ms-2 mt-1 me-5">Total:{`$${totalPrice}`}</h3>
-                                <button className="mt-1 bg-primary text-white rounded bgHover" type="submit">Send order</button>
+                            <div className="ms-1">
+                                <Button variant="contained" endIcon={<SendIcon />}>Send</Button>
                             </div>
                         </Form>
                     )}

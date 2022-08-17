@@ -3,7 +3,7 @@ import Cart from '../cartWidget/Cart';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import ButtonTheme from "./ButtonTheme";
+import ButtonTheme from './ButtonTheme';
 const imgLogo = {
     alt: 'Imagen Logo',
     imgUrl: '/imagesNav/simboloArbol.svg'
@@ -14,7 +14,7 @@ const imgUser = {
 }
 
 
-const NavBar = () => {
+const NavBar = ({ setDark, checked }) => {
     const [navBarOptions, setNavBarOptions] = useState([]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="sticky-top navbar navbar-expand-md d-flex flex-nowrap navbar-light">
+            <nav className="sticky-top navbar navbar-expand-md d-flex flex-nowrap">
                 <div className="container-fluid flex-wrap">
                     <Link to={'/'} className="a_img navbar-brand">
                         <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
@@ -61,7 +61,11 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <Link to={'/orders'} className="linkNav active m-2 text-dark">Orders</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to={'/favorites'} className="linkNav active m-2 text-dark">Favorites</Link>
+                            </li>
                         </ul>
+                        <ButtonTheme setDark={setDark} checked={checked}/>
                         <div className='d-flex align-items-center me-2'>
                             <Link to={'#'} className='text-black linkNav'>Login/Register</Link>
                             <img id="tamañoUser" src={imgUser.imgUrl} alt={imgUser.alt} />

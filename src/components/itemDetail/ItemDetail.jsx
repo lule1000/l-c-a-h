@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { useCartContext } from "../context/CartContext";
-import { AiFillCheckCircle } from "react-icons/ai"
+import { AiFillCheckCircle } from "react-icons/ai";
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 
 const ItemDetail = ({ item }) => {
     const { stock, imgUrl, alt, name, description, price, quantity } = item;
@@ -11,6 +14,11 @@ const ItemDetail = ({ item }) => {
     const onAdd = (amount) => {
         setAmount(amount);
         addItem(item, quantity * amount);
+    }
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+    const handleClick = () => {
+
     }
 
     return (
@@ -29,6 +37,7 @@ const ItemDetail = ({ item }) => {
                         <h5><AiFillCheckCircle className="bgColor"/> {amount} products have been added to the cart</h5>
                         <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
                     </>}
+                    <Checkbox onClick={handleClick} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                 </div>
             </div>
         </div>
