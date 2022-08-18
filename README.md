@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Like Camping at home
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hola, espero que estes muy bien! Mi nombre es Ulises Catarinolo y esta es una aplicación web realizada con el objetivo de cumplir y entregar el proyecto final de CoderHouse del curso de React Js, espero que te guste y me dejes tu feedback que es muy bienvenido, gracias!
 
-## Available Scripts
+## Herramientas utilizadas:
 
-In the project directory, you can run:
+- ### React Js
 
-### `npm start`
+Me apoyé principalmente en React ya que era la consigna principal del curso. Esto me permitió crear una aplicación interactiva basada en componentes, lo que me facilitó muchísimo a la hora de aplicar la lógica.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ### Bootstrap
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Bootstrap es una librería de CSS que me ayudó mediante las clases a darle estilo y diseño a mi aplicación. Decidí hacer la “instalación” mediante CDN ya que considero que para este tipo de herramientas y por el uso que le doy no vale la pena instalarlas por NPM.
 
-### `npm test`
+- ### Material UI
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Material UI fue una de las cosas que más centré por fuera de lo que dieron en el curso y la verdad fue una de las cosas que más me gusto. Me ayudó a darle estilos a la página y también a implementar el dark mode (junto con el botón para pasar de light a dark y viceversa). Por otro lado la utilice Material para crear mis cards en el itemList y también para hacer la tabla en la que se detallan los productos añadidos al carrito y su total.
 
-### `npm run build`
+- ### Formik
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Utilice Formik para validar el formulario que se envía a Firebase. El botón de “send” se habilita una vez que los tres campos estén completos y con sus respectivos requisitos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ### Sass
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Sass es un preprocesador que me permite ordenar mis estilos de una manera mucho más prolija y utilizando menos líneas de código. Lo utilice principalmente para media queries y los breakpoints.
 
-### `npm run eject`
+- ### React Router Dom
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Esta herramienta me permitió crear un enrutamiento en toda la página y por consecuencia generar navegabilidad a las otras secciones. Simplemente envolví en una etiqueta Routes cada Route que me llevaba a otras vistas. La NavBar fue el único componente que quedó fuera de esto ya que mi deseo es que se muestre en todas las vistas de la página.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ### Firebase
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Firebase me permitió crear una base de datos a la cual yo solicitaba información acerca de los productos y luego mostrarlos con su respectiva data. También me sirvió para poder tomar las órdenes e información que se mandaba a través del formulario.
