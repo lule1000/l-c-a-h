@@ -27,7 +27,7 @@ const NavBar = ({ setDark, checked }) => {
 
     return (
         <Box sx={{ backgroundColor: 'darkseagreen' }}>
-            <nav className="navbar navbar-expand-md d-flex flex-nowrap navbar-dark">
+            <nav className="navbar navbar-expand-lg d-flex flex-nowrap navbar-dark">
                 <div className="container-fluid flex-wrap">
                     <Link to={'/'} className="a_img navbar-brand">
                         <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
@@ -52,9 +52,6 @@ const NavBar = ({ setDark, checked }) => {
                                         return <Link to={route} className="dropdown-item">{category}</Link>
                                     })}
                                 </ul>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'#'} className="linkNav active m-2 text-white">About Us</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to={'/orders'} className="linkNav active m-2 text-white">Orders</Link>

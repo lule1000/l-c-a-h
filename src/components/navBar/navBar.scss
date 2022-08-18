@@ -50,14 +50,30 @@ nav {
     }
 }
 
+@media only screen and (min-width: 550px) {
+    nav {
+        .a_img {
+            width: 25%;
+        }
+    }
+}
+
 @media only screen and (min-width: 700px) {
     nav {
         .a_img {
-            width: 13%;
+            width: 20%;
 
             .logo {
                 width: 90%;
             }
+        }
+    }
+}
+
+@media only screen and (min-width: 970px) {
+    nav {
+        .a_img {
+            width: 13%;
         }
     }
 }
