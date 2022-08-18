@@ -49,7 +49,7 @@ const ButtonTheme = ({ setDark, checked }) => {
         },
     }));
     return (
-        <MaterialUISwitch onChange={setDark} checked={checked}/>
+        <MaterialUISwitch className='me-2' onChange={setDark} checked={checked}/>
     );
 }
 
