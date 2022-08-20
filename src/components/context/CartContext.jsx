@@ -34,7 +34,7 @@ const CartProvider = ({ children }) => {
             date: new Date()
         };
         addDoc(orderCollection, order)
-            .then(({ id }) => setOrderData(id), setOrderItems([...cartItems]))
+            .then(({ id }) => setOrderData(id), setOrderItems(cartItems))
             .catch(err => console.log(err))
             .finally(clearCart)
     };

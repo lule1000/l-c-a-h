@@ -70,7 +70,7 @@ const ItemListContainer = () => {
 
     return loading ? <Spinner /> :
         <>
-            <div className='d-flex justify-content-center'>
+            <div className='d-flex justify-content-center p-2 sticky-top'>
                 <form className="d-flex w-25 mt-2" role="search">
                     <input className="form-control me-2" onChange={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
                     <button className="bgHover me-2 rounded" type="submit"><BsSearch /></button>

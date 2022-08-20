@@ -24,6 +24,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }
 }));
 
+
 export default function Orders() {
     const { orderData, orderItems } = useOrderContext();
     return orderItems.length === 0 ?
@@ -39,6 +40,8 @@ export default function Orders() {
                         <StyledTableCell align="center">Price</StyledTableCell>
                         <StyledTableCell align="center">Quantity</StyledTableCell>
                         <StyledTableCell align="center">Subtotal</StyledTableCell>
+                        <StyledTableCell align="center">Number of order</StyledTableCell>
+                        <StyledTableCell align="center">State</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -47,7 +50,9 @@ export default function Orders() {
                             <StyledTableCell align="center">{name}</StyledTableCell>
                             <StyledTableCell align="center">${price}</StyledTableCell>
                             <StyledTableCell align="center">{quantity}</StyledTableCell>
-                            <StyledTableCell align="center">${orderData}</StyledTableCell>
+                            <StyledTableCell align="center">${quantity * price}</StyledTableCell>
+                            <StyledTableCell align="center">{orderData}</StyledTableCell>
+                            <StyledTableCell align="center">In confirmation</StyledTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
