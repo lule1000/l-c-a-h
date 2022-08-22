@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useCartContext } from "../context/CartContext";
+import { useOrderContext } from "../context/OrdersContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
-import { useOrderContext } from "../context/OrdersContext";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import './cartWidget.scss';
@@ -11,10 +11,8 @@ import CustomizedTables from "./Table";
 
 const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
-    const { cartItems, clearCart, removeItem, sendOrder } = useCartContext();
+    const { cartItems, clearCart, removeItem, sendOrder, updateStock } = useCartContext();
     const { setOrderItems, setOrderData } = useOrderContext();
-
-    console.log(cartItems)
 
     useEffect(() => {
         let total = cartItems.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -56,7 +54,8 @@ const CartCheckout = () => {
                     return errors
                 }}
                 onSubmit={(valores, { resetForm }) => {
-                    resetForm()
+                    resetForm();
+                    updateStock(cartItems);
                     sendOrder(totalPrice, valores, setOrderData, setOrderItems);
                     swal("Successful order!", "Go to orders and you can see your request", "success");
                 }}

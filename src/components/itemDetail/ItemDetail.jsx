@@ -10,16 +10,18 @@ import Favorite from '@mui/icons-material/Favorite';
 const ItemDetail = ({ item }) => {
     const { stock, imgUrl, alt, name, description, price, quantity } = item;
     const [amount, setAmount] = useState(0);
+    const [newStock, setNewStock] = useState(stock);
     const { addItem } = useCartContext();
+
+
     const onAdd = (amount) => {
         setAmount(amount);
         addItem(item, quantity * amount);
+        setNewStock(stock - amount)
     }
+
+
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
-    const handleClick = () => {
-
-    }
 
     return (
         <div className="border border-3 row g-0 m-5">
@@ -32,12 +34,14 @@ const ItemDetail = ({ item }) => {
                     <h5>Description</h5>
                     <p className="card-text">{description}</p>
                     <h3 className="card-text"><b>${price}</b></h3>
-                    <p className="card-text"><b>Stock  ({stock} available)</b></p>
-                    {amount === 0 ? <ItemCount stock={stock} onAdd={onAdd} /> : <>
-                        <h5><AiFillCheckCircle className="bgColor"/> {amount} products have been added to the cart</h5>
-                        <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
-                    </>}
-                    <Checkbox onClick={handleClick} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                    <p className="card-text"><b>Stock  ({newStock} available)</b></p>
+                    {amount === 0 ?
+                        <ItemCount stock={newStock} onAdd={onAdd} /> :
+                        <>
+                            <h5><AiFillCheckCircle className="bgColor" /> {amount} products have been added to the cart</h5>
+                            <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
+                        </>}
+                    <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                 </div>
             </div>
         </div>

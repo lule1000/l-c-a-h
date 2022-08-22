@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
-import { addDoc, getFirestore, collection } from "firebase/firestore";
+import { addDoc, getFirestore, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 
 const CartContext = createContext();
 export const useCartContext = () => useContext(CartContext)
@@ -34,10 +34,21 @@ const CartProvider = ({ children }) => {
             date: new Date()
         };
         addDoc(orderCollection, order)
-            .then(({ id }) => setOrderData(id), setOrderItems(cartItems))
+            .then(({ id }) =>  setOrderData(id), setOrderItems(cartItems))
             .catch(err => console.log(err))
             .finally(clearCart)
     };
+
+    const updateStock = async (cartItems) => {
+        const db = getFirestore();
+        cartItems.forEach(async (item) => {
+            const orderDoc = doc(collection(db, 'items'), item.id);
+            const dbItem = await getDoc(orderDoc);
+            const dbBody = dbItem.data();
+            const newStock = dbBody.stock - item.quantity;
+            updateDoc(orderDoc, {stock : newStock});
+        })
+    }
 
     return (
         <CartContext.Provider value={{
@@ -47,7 +58,8 @@ const CartProvider = ({ children }) => {
             isInCart,
             clearCart,
             removeItem,
-            sendOrder
+            sendOrder,
+            updateStock
         }}>
             {children}
         </CartContext.Provider>);
