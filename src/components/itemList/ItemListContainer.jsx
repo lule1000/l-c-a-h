@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import Spinner from '../spinnerLoading/Spinner';
 import Footer from '../footer/Footer';
-import { BsSearch } from 'react-icons/bs';
 import './itemListContainer.scss';
 import { useParams } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
@@ -73,7 +72,6 @@ const ItemListContainer = () => {
             <div className='d-flex justify-content-center p-2 sticky-top'>
                 <form className="d-flex w-25 mt-2" role="search">
                     <input className="form-control me-2" onChange={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
-                    <button className="bgHover me-2 rounded" type="submit"><BsSearch /></button>
                 </form>
             </div>
             <main className='m-4 d-flex flex-direction-row justify-content-center d-flex flex-wrap'>

@@ -6,6 +6,7 @@ import { AiFillCheckCircle } from "react-icons/ai";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { useEffect } from "react";
 
 const ItemDetail = ({ item }) => {
     const { stock, imgUrl, alt, name, description, price, quantity } = item;
@@ -18,7 +19,8 @@ const ItemDetail = ({ item }) => {
         setAmount(amount);
         addItem(item, quantity * amount);
         setNewStock(stock - amount)
-    }
+        
+    } 
 
 
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
