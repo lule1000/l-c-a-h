@@ -23,7 +23,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
 }));
 
-export default function CustomizedTables({ cartItems, clearCart, removeItem }) {
+export default function CustomizedTables({ cartItems, clearCart, removeItem, setRemoveForm }) {
   return (
     <TableContainer>
       <Table>
@@ -37,14 +37,18 @@ export default function CustomizedTables({ cartItems, clearCart, removeItem }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {cartItems.map(({name, price, quantity, id}) => (
-            <StyledTableRow key={id}>
-              <StyledTableCell align="center">{name}</StyledTableCell>
-              <StyledTableCell align="center">${price}</StyledTableCell>
-              <StyledTableCell align="center">{quantity}</StyledTableCell>
-              <StyledTableCell align="center">${price * quantity}</StyledTableCell>
-              <StyledTableCell align="center"><DeleteIcon className='text-danger bgHover' onClick={() => removeItem(id)} /></StyledTableCell>
-            </StyledTableRow>
+          {cartItems.map(({ name, price, quantity, id, stock }) => (
+            quantity > stock ?
+              <>
+                {setRemoveForm(false)}
+              </> :
+              <StyledTableRow key={id}>
+                <StyledTableCell align="center">{name}</StyledTableCell>
+                <StyledTableCell align="center">${price}</StyledTableCell>
+                <StyledTableCell align="center">{quantity}</StyledTableCell>
+                <StyledTableCell align="center">${price * quantity}</StyledTableCell>
+                <StyledTableCell align="center"><DeleteIcon className='text-danger bgHover' onClick={() => removeItem(id)} /></StyledTableCell>
+              </StyledTableRow>
           ))}
         </TableBody>
       </Table>

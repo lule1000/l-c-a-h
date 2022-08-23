@@ -11,6 +11,7 @@ import CustomizedTables from "./Table";
 
 const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
+    const [removeForm, setRemoveForm] = useState(true);
     const { cartItems, clearCart, removeItem, sendOrder, updateStock } = useCartContext();
     const { setOrderItems, setOrderData } = useOrderContext();
 
@@ -25,8 +26,8 @@ const CartCheckout = () => {
             <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
 
-        <div className="mt-4">
-            <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem} />
+        removeForm ? <div className="mt-4">
+            <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem} setRemoveForm={setRemoveForm} />
             <Formik
                 initialValues={{
                     name: '',
@@ -101,7 +102,11 @@ const CartCheckout = () => {
                     </Form>
                 )}
             </Formik>
-        </div>
+        </div> :
+            <div className="text-center">
+                <h3 className="mt-5">You have exceeded the stock with one of your products, empty the cart and select your products again...</h3>
+                <button className="mt-5 bg-danger bgHover rounded" onClick={clearCart}>Clear Cart</button>
+            </div>
 }
 
 export default CartCheckout;
