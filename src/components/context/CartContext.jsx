@@ -24,7 +24,7 @@ const CartProvider = ({ children }) => {
 
     const removeItem = (id) => setCartItems(cartItems.filter(product => product.id !== id));
 
-    const sendOrder = (totalPrice, buyerData, setOrderData, setOrderItems) => {
+    const sendOrder = (totalPrice, buyerData, setOrderItems) => {
         const db = getFirestore();
         const orderCollection = collection(db, "orders");
         const order = {
@@ -34,7 +34,12 @@ const CartProvider = ({ children }) => {
             date: new Date()
         };
         addDoc(orderCollection, order)
-            .then(({ id }) =>  setOrderData(id), setOrderItems((prevOrders) => [...prevOrders, ...cartItems]))
+            .then(({ id }) => {
+                setOrderItems((prevOrders) => {
+                    return [...prevOrders, { orderId: id, items: [...cartItems] }];
+                }
+                )
+            })
             .catch(err => console.log(err))
             .finally(clearCart)
     };
@@ -46,7 +51,7 @@ const CartProvider = ({ children }) => {
             const dbItem = await getDoc(orderDoc);
             const dbBody = dbItem.data();
             const newStock = dbBody.stock - item.quantity;
-            updateDoc(orderDoc, {stock : newStock});
+            updateDoc(orderDoc, { stock: newStock });
         })
     }
 

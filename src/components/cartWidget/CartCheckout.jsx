@@ -13,7 +13,7 @@ const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
     const { cartItems, clearCart, removeItem, sendOrder, updateStock } = useCartContext();
-    const { setOrderItems, setOrderData } = useOrderContext();
+    const { setOrderItems } = useOrderContext();
 
     useEffect(() => {
         let total = cartItems.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -57,7 +57,7 @@ const CartCheckout = () => {
                 onSubmit={(valores, { resetForm }) => {
                     resetForm();
                     updateStock(cartItems);
-                    sendOrder(totalPrice, valores, setOrderData, setOrderItems);
+                    sendOrder(totalPrice, valores, setOrderItems);
                     swal("Successful order!", "Go to orders and you can see your request", "success");
                 }}
             >

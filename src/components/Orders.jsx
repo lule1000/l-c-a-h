@@ -26,8 +26,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function Orders() {
-    const { orderData, orderItems } = useOrderContext();
-    console.log(orderData)
+    const { orderItems } = useOrderContext();
+    console.log(orderItems)
     return orderItems.length === 0 ?
         <div className="text-center">
             <h1 className="mt-5">You haven`t orders...</h1>
@@ -46,16 +46,18 @@ export default function Orders() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {orderItems.map(({ name, price, quantity, id }) => (
-                        <StyledTableRow key={id}>
-                            <StyledTableCell align="center">{name}</StyledTableCell>
-                            <StyledTableCell align="center">${price}</StyledTableCell>
-                            <StyledTableCell align="center">{quantity}</StyledTableCell>
-                            <StyledTableCell align="center">${quantity * price}</StyledTableCell>
-                            <StyledTableCell align="center">{orderData}</StyledTableCell>
-                            <StyledTableCell align="center">In confirmation</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
+                    {orderItems.map(({ orderId, items }) =>
+                        items.map(({ name, price, quantity, id }) => (
+                            <StyledTableRow key={id}>
+                                <StyledTableCell align="center">{name}</StyledTableCell>
+                                <StyledTableCell align="center">${price}</StyledTableCell>
+                                <StyledTableCell align="center">{quantity}</StyledTableCell>
+                                <StyledTableCell align="center">${quantity * price}</StyledTableCell>
+                                <StyledTableCell align="center">{orderId}</StyledTableCell>
+                                <StyledTableCell align="center">In confirmation</StyledTableCell>
+                            </StyledTableRow>
+                        ))
+                    )}
                 </TableBody>
             </Table>
         </TableContainer>
