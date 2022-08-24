@@ -23,7 +23,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
 }));
 
-export default function CustomizedTables({ cartItems, clearCart, removeItem, setRemoveForm }) {
+export default function CustomizedTables({ cartItems, clearCart, removeItem, setDisabledButton }) {
   return (
     <TableContainer>
       <Table>
@@ -38,10 +38,7 @@ export default function CustomizedTables({ cartItems, clearCart, removeItem, set
         </TableHead>
         <TableBody>
           {cartItems.map(({ name, price, quantity, id, stock }) => (
-            quantity > stock ?
-              <>
-                {setRemoveForm(false)}
-              </> :
+            <>
               <StyledTableRow key={id}>
                 <StyledTableCell align="center">{name}</StyledTableCell>
                 <StyledTableCell align="center">${price}</StyledTableCell>
@@ -49,6 +46,12 @@ export default function CustomizedTables({ cartItems, clearCart, removeItem, set
                 <StyledTableCell align="center">${price * quantity}</StyledTableCell>
                 <StyledTableCell align="center"><DeleteIcon className='text-danger bgHover' onClick={() => removeItem(id)} /></StyledTableCell>
               </StyledTableRow>
+              {quantity > stock ?
+                <div className='d-flex justify-content-center'>
+                  <p className='text-danger'>The product is out of available stock</p>
+                  {setDisabledButton(true)}
+                </div> : <></>}
+            </>
           ))}
         </TableBody>
       </Table>

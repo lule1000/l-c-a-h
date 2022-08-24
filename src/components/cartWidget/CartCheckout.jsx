@@ -11,7 +11,7 @@ import CustomizedTables from "./Table";
 
 const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
-    const [removeForm, setRemoveForm] = useState(true);
+    const [disabledButton, setDisabledButton] = useState(false);
     const { cartItems, clearCart, removeItem, sendOrder, updateStock } = useCartContext();
     const { setOrderItems, setOrderData } = useOrderContext();
 
@@ -26,8 +26,8 @@ const CartCheckout = () => {
             <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
 
-        removeForm ? <div className="mt-4">
-            <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem} setRemoveForm={setRemoveForm} />
+        <div className="mt-4">
+            <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem} setDisabledButton={setDisabledButton} />
             <Formik
                 initialValues={{
                     name: '',
@@ -97,16 +97,12 @@ const CartCheckout = () => {
                             <ErrorMessage name="phone" component={() => (<p className="ms-2 text-danger">{errors.phone}</p>)} />
                         </div>
                         <div className="ms-1">
-                            <Button variant="contained" type="submit" endIcon={<SendIcon />}>Send</Button>
+                            <Button disabled={disabledButton} variant="contained" type="submit" endIcon={<SendIcon />}>Send</Button>
                         </div>
                     </Form>
                 )}
             </Formik>
-        </div> :
-            <div className="text-center">
-                <h3 className="mt-5">You have exceeded the stock with one of your products, empty the cart and select your products again...</h3>
-                <button className="mt-5 bg-danger bgHover rounded" onClick={clearCart}>Clear Cart</button>
-            </div>
+        </div>
 }
 
 export default CartCheckout;

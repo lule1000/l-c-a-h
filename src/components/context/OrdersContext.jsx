@@ -5,7 +5,7 @@ export const useOrderContext = () => useContext(OrderContext)
 
 const OrderProvider = ({ children }) => {
     const [orderItems, setOrderItems] = useState([]);
-    const [orderData, setOrderData] = useState(String);
+    const [orderData, setOrderData] = useState(Number);
 
     return (
         <OrderContext.Provider value={{ orderItems, setOrderItems, orderData, setOrderData }}>

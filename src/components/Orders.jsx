@@ -27,6 +27,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Orders() {
     const { orderData, orderItems } = useOrderContext();
+    console.log(orderData)
     return orderItems.length === 0 ?
         <div className="text-center">
             <h1 className="mt-5">You haven`t orders...</h1>
@@ -40,7 +41,7 @@ export default function Orders() {
                         <StyledTableCell align="center">Price</StyledTableCell>
                         <StyledTableCell align="center">Quantity</StyledTableCell>
                         <StyledTableCell align="center">Subtotal</StyledTableCell>
-                        <StyledTableCell align="center">Number of order</StyledTableCell>
+                        <StyledTableCell align="center">Number Order</StyledTableCell>
                         <StyledTableCell align="center">State</StyledTableCell>
                     </TableRow>
                 </TableHead>
