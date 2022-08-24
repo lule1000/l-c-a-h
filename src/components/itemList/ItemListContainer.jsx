@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import Spinner from '../spinnerLoading/Spinner';
-import Footer from '../footer/Footer';
 import './itemListContainer.scss';
 import { useParams } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
@@ -77,7 +76,6 @@ const ItemListContainer = () => {
             <main className='m-4 d-flex flex-direction-row justify-content-center d-flex flex-wrap'>
                 <ItemList items={dataItems} />
             </main>
-            <Footer />
         </>
 }
 

@@ -6,7 +6,7 @@ Hola, espero que estes muy bien! Mi nombre es Ulises Catarinolo y esta es una ap
 
 - ### React Js
 
-Me apoyé principalmente en React ya que era la consigna principal del curso. Esto me permitió crear una aplicación interactiva basada en componentes, lo que me facilitó muchísimo a la hora de aplicar la lógica.
+Me apoyé principalmente en React ya que era la consigna principal del curso. Esto me permitió crear una aplicación interactiva basada en componentes funcionales, lo que me facilitó muchísimo a la hora de hacer la estructura de la aplicación. 
 
 - ### Bootstrap
 
