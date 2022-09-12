@@ -26,7 +26,7 @@ const CartCheckout = () => {
             <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
 
-        <div className="mt-4">
+        <div className="m-4">
             <CustomizedTables cartItems={cartItems} clearCart={clearCart} removeItem={removeItem} setDisabledButton={setDisabledButton} />
             <Formik
                 initialValues={{

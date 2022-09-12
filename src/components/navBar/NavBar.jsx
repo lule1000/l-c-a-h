@@ -41,7 +41,7 @@ const NavBar = ({ setDark, checked }) => {
                                 <Link to={'/'} className="linkNav active m-2 text-white">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'#'} className="linkNav active m-2 text-white">Companys</Link>
+                                <Link to={'#'} className="linkNav active m-2 text-white">Brands</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <Link to={'#'} className="linkNav dropdown-toggle active m-2 text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +49,7 @@ const NavBar = ({ setDark, checked }) => {
                                 </Link>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {navBarOptions.map(({ route, category }) => {
-                                        return <Link to={route} className="dropdown-item">{category}</Link>
+                                        return <Link to={route} key={category.toString()} className="dropdown-item">{category}</Link>
                                     })}
                                 </ul>
                             </li>

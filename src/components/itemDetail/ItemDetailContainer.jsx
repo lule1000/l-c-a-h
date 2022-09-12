@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { BsSearch } from 'react-icons/bs';
 import './itemDetailContainer.scss';
 import ItemDetail from "./ItemDetail";
 import Spinner from "../spinnerLoading/Spinner";
