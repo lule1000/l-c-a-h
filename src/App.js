@@ -20,7 +20,8 @@ const App = () => {
     palette: {
       mode: dark ? 'dark' : 'light',
     },
-  })
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -31,7 +32,7 @@ const App = () => {
               <NavBar setDark={() => setDark(!dark)} checked={dark} />
               <Routes>
                 <Route path='*' element={<h1>ERROR 404 NOT FOUND</h1>} />
-                <Route index element={<ItemListContainer />} />
+                <Route index element={<ItemListContainer dark={dark} />} />
                 <Route path='/category/:name' element={<ItemListContainer />} />
                 <Route path='item/:id' element={<ItemDetailContainer />} />
                 <Route path='/cart' element={<CartCheckout />} />

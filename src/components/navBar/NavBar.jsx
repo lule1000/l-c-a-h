@@ -1,11 +1,12 @@
-import './navBar.scss';
-import Cart from '../cartWidget/Cart';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import Box from '@mui/material/Box';
 import ButtonTheme from './ButtonTheme';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Cart from '../cartWidget/Cart';
+import './navBar.scss';
 const imgLogo = {
     alt: 'Imagen Logo',
     imgUrl: '/imagesNav/simboloArbol.svg'
@@ -14,6 +15,8 @@ const imgLogo = {
 
 const NavBar = ({ setDark, checked }) => {
     const [navBarOptions, setNavBarOptions] = useState([]);
+    const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+    console.log(user)
 
     useEffect(() => {
         const db = getFirestore();
@@ -60,14 +63,32 @@ const NavBar = ({ setDark, checked }) => {
                                 <Link to={'/favorites'} className="linkNav active m-2 text-white">Favorites</Link>
                             </li>
                         </ul>
-                        <div className='d-flex align-items-center me-1'>
-                            <Link to={'#'} className='text-white linkNav'>Login/Register</Link>
-                            <AccountCircleIcon sx={{ color: 'white' }} />
-                        </div>
                     </div>
+                </div><div className="dropdown">
+                    <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {
+                            isAuthenticated ?
+                                <img className='userImg' src={user.picture} alt="" /> :
+                                <AccountCircleIcon sx={{ color: 'white' }} />
+                        }
+                    </button>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        {
+                            isAuthenticated ?
+                                <>
+                                    <li className="dropdown-item userLink">Your Profile</li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li className="dropdown-item userLink">Settings</li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li className="dropdown-item userLink" onClick={() => logout()}>Sign Out</li>
+                                </> :
+                                <li className="dropdown-item userLink" onClick={() => loginWithRedirect()} >Login</li>
+                        }
+                    </ul>
                 </div>
                 <ButtonTheme setDark={setDark} checked={checked} />
                 <Cart />
+
             </nav>
         </Box>
     );

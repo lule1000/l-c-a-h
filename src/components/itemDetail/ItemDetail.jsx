@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useFavoriteContext } from "../context/FavoriteContext";
 import { AiFillCheckCircle } from "react-icons/ai";
+import { useAuth0 } from "@auth0/auth0-react";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -13,6 +14,7 @@ const ItemDetail = ({ item }) => {
     const [amount, setAmount] = useState(0);
     const { addItem } = useCartContext();
     const { addFavorite } = useFavoriteContext();
+    const { isAuthenticated } = useAuth0()
 
     const onAdd = (amount) => {
         setAmount(amount);
@@ -37,12 +39,16 @@ const ItemDetail = ({ item }) => {
                     <p className="card-text">{description}</p>
                     <h3 className="card-text"><b>${price}</b></h3>
                     <p className="card-text"><b>Stock  ({stock} available)</b></p>
-                    {amount === 0 ?
-                        <ItemCount stock={stock} onAdd={onAdd} /> :
-                        <>
-                            <h5><AiFillCheckCircle className="bgColor" /> {amount} products have been added to the cart</h5>
-                            <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
-                        </>}
+                    {
+                        isAuthenticated ?
+                            amount === 0 ?
+                                <ItemCount stock={stock} onAdd={onAdd} /> :
+                                <>
+                                    <h5><AiFillCheckCircle className="bgColor" /> {amount} products have been added to the cart</h5>
+                                    <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
+                                </> : 
+                                <h3>You must be logged in if you want to buy</h3>
+                    }
                     <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onClick={onAddFavorite} />
                 </div>
             </div>

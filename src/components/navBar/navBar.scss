@@ -1,5 +1,4 @@
 nav {
-    box-shadow: 1px 1px 1px #66ff66;
 
     .linkNav {
         text-decoration-color: #66ff66;
@@ -9,15 +8,20 @@ nav {
         text-decoration: none;
     }
 
-
-
     .bgHover:hover {
         box-shadow: 1px 1px 1px black;
     }
 
-    .bgColor {
-        background-color: #66ff66;
+    .userLink {
+        cursor: pointer;
     }
+
+    .userImg {
+        width: 35px;
+        height: 35px;
+        border-radius: 17px;
+    }
+
 }
 
 @media only screen and (min-width: 280px) {
@@ -29,12 +33,12 @@ nav {
                 width: 100%;
             }
         }
-    }
 
-    .cart-badge {
-        font-size: 1rem;
-        text-align: center;
-        color: white;
+        .cart-badge {
+            font-size: 1rem;
+            text-align: center;
+            color: white;
+        }
     }
 }
 
