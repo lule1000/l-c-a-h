@@ -46,7 +46,6 @@ const ItemDetail = ({ item }) => {
                                 <>
                                     <h5><AiFillCheckCircle className="bgColor" /> {amount} products have been added to the cart</h5>
                                     <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
-                                    <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onClick={onAddFavorite} />
                                 </> :
                             <>
                                 <h3>You must be logged in if you want to buy</h3>

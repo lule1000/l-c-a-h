@@ -73,8 +73,8 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
 
     return (
         <Box height={70} >
-            <AppBar sx={{ backgroundColor: 'darkseagreen' }} position="absolute" component="nav">
-                <Toolbar sx={{ justifyContent: 'space-between', display: 'flex' }}>
+            <AppBar position="absolute" component="nav">
+                <Toolbar sx={{ justifyContent: 'space-between', display: 'flex', backgroundColor: 'darkseagreen' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <IconButton
                             color="inherit"

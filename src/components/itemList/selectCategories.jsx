@@ -16,11 +16,11 @@ const SelectCategories = ({ dark }) => {
     }, []);
 
     return (
-        <div class="dropdown me-2">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="dropdown me-2">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Categories
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 {
                     navBarOptions.map(({route, category}) => (
                         <li key={category} ><Link to={route} className='text-decoration-none text-black p-2' >{category}</Link></li>

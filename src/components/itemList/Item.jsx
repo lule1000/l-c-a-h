@@ -10,7 +10,7 @@ const Item = ({ imgUrl, alt, name, price, id, dark }) => {
             <Link to={`/item/${id}`} className='text-decoration-none'>
                 <CardMedia className='border-bottom' component="img" image={imgUrl} alt={alt} />
                 <CardContent>
-                    <Typography className="titleCard" sx={dark ? { color: 'white' } : { color: 'black' }} fontSize={20} >{name}</Typography>
+                    <Typography className="titleCard" sx={dark ? { color: 'white' } : { color: 'black' }} >{name}</Typography>
                     <Typography className="titleCard" sx={dark ? { color: 'white' } : { color: 'black' }} variant="body5"><b>${price}</b></Typography>
                 </CardContent>
             </Link>

@@ -69,7 +69,7 @@ const ItemListContainer = ({ dark }) => {
 
     return loading ? <Spinner /> :
         <>
-            <div className='d-flex justify-content-center align-items-center p-2'>
+            <div className='d-flex justify-content-center align-items-center p-2 mt-3'>
                 <SelectCategories dark={dark} />
                 <form className="d-flex w-25" role="search">
                     <input className="form-control" onInput={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
