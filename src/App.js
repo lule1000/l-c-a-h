@@ -10,6 +10,7 @@ import OrderProvider from './components/context/OrdersContext';
 import FavoriteProvider from './components/context/FavoriteContext';
 import Orders from './components/Orders';
 import Favorites from './components/Favorites';
+import Profile from './components/Profile';
 import CssBaseline from '@mui/material/CssBaseline';
 
 
@@ -29,7 +30,7 @@ const App = () => {
         <FavoriteProvider>
           <CartProvider>
             <BrowserRouter>
-              <NavBar setDark={() => setDark(!dark)} checked={dark} />
+              <NavBar setDark={() => setDark(!dark)} checked={dark} dark={dark} />
               <Routes>
                 <Route path='*' element={<h1>ERROR 404 NOT FOUND</h1>} />
                 <Route index element={<ItemListContainer dark={dark} />} />
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path='/cart' element={<CartCheckout />} />
                 <Route path='/orders' element={<Orders />} />
                 <Route path='/favorites' element={<Favorites />} />
+                <Route path='/profile' element={<Profile />} />
               </Routes>
             </BrowserRouter>
           </CartProvider>

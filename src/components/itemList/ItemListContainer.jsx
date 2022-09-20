@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ItemList from './ItemList';
 import Spinner from '../Spinner';
+import SelectCategories from './selectCategories';
 import './itemListContainer.scss';
 import { useParams } from 'react-router-dom';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
@@ -68,12 +69,13 @@ const ItemListContainer = ({ dark }) => {
 
     return loading ? <Spinner /> :
         <>
-            <div className='d-flex justify-content-center p-2'>
-                <form className="d-flex w-25 mt-2" role="search">
-                    <input className="form-control me-2" onInput={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
+            <div className='d-flex justify-content-center align-items-center p-2'>
+                <SelectCategories dark={dark} />
+                <form className="d-flex w-25" role="search">
+                    <input className="form-control" onInput={handleChange} value={search} type="search" placeholder="Search..." aria-label="Search" />
                 </form>
             </div>
-            <main className='m-4 d-flex flex-direction-row justify-content-center d-flex flex-wrap'>
+            <main className='d-flex ms-4 flex-direction-row justify-content-center d-flex flex-wrap'>
                 <ItemList items={dataItems} dark={dark} />
             </main>
         </>

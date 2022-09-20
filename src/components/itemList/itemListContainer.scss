@@ -1,11 +1,49 @@
-.card {
-    width: 15rem;
-}
-
 .card:hover {
     border-color: #66ff66;
 }
 
 .bgHover:hover {
     box-shadow: 1px 1px 1px black;
+}
+
+.linkNav {
+    text-decoration-color: #66ff66;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.linkNav:hover {
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 300px) {
+    .card {
+        width: 8rem;
+        .titleCard {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .card {
+        width: 9rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .card {
+        width: 12rem;
+        .titleCard {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .card {
+        width: 15rem;
+        .titleCard {
+            font-size: 1.2rem;
+        }
+    }
 }
