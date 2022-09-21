@@ -18,7 +18,7 @@ import Button from '@mui/material/Button';
 import './navBar.scss';
 const imgLogo = {
     alt: 'Imagen Logo',
-    imgUrl: '/imagesNav/simboloArbol.svg'
+    imgUrl: '/l-c-a-h/imagesNav/simboloArbol.svg'
 }
 
 const drawerWidth = 240;
