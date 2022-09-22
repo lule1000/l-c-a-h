@@ -26,7 +26,7 @@ const drawerWidth = 240;
 const navItems = [
     {
         name: 'Home',
-        route: '/'
+        route: '/l-c-a-h'
     },
     {
         name: 'Brands',
@@ -34,11 +34,11 @@ const navItems = [
     },
     {
         name: 'Orders',
-        route: '/orders'
+        route: '/l-c-a-h/orders'
     },
     {
         name: 'Favorites',
-        route: '/favorites'
+        route: '/l-c-a-h/favorites'
     }
 ];
 
@@ -85,7 +85,7 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Link to={'/'} className="a_img m-2">
+                        <Link to={'/l-c-a-h'} className="a_img m-2">
                             <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
                         </Link>
                         {
@@ -111,7 +111,7 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                             {
                                 isAuthenticated ?
                                     <>
-                                        <li className="dropdown-item userLink"><Link to={'/profile'} className='text-decoration-none text-black' >Your Profile</Link></li>
+                                        <li className="dropdown-item userLink"><Link to={'/l-c-a-h/profile'} className='text-decoration-none text-black' >Your Profile</Link></li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li className="dropdown-item userLink" onClick={() => logout()}>Sign Out</li>
                                     </> :

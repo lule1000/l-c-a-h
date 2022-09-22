@@ -12,7 +12,7 @@ const Favorites = () => {
     return favorite.length === 0 ?
         <div className="text-center">
             <h1 className="mt-5">You haven`t products in favorites...</h1>
-            <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
+            <Link to={'/l-c-a-h'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
         <Box className="d-flex flex-column m-2">
             {favorite.map(({ name, imgUrl, id, price }) =>

@@ -33,13 +33,13 @@ const App = () => {
               <NavBar setDark={() => setDark(!dark)} checked={dark} dark={dark} />
               <Routes>
                 <Route path='*' element={<h1>ERROR 404 NOT FOUND</h1>} />
-                <Route index element={<ItemListContainer dark={dark} />} />
+                <Route path='/l-c-a-h' element={<ItemListContainer dark={dark} />} />
                 <Route path='/category/:name' element={<ItemListContainer />} />
-                <Route path='item/:id' element={<ItemDetailContainer />} />
-                <Route path='/cart' element={<CartCheckout />} />
-                <Route path='/orders' element={<Orders />} />
-                <Route path='/favorites' element={<Favorites />} />
-                <Route path='/profile' element={<Profile />} />
+                <Route path='/l-c-a-h/item/:id' element={<ItemDetailContainer />} />
+                <Route path='/l-c-a-h/cart' element={<CartCheckout />} />
+                <Route path='/l-c-a-h/orders' element={<Orders />} />
+                <Route path='/l-c-a-h/favorites' element={<Favorites />} />
+                <Route path='/l-c-a-h/profile' element={<Profile />} />
               </Routes>
             </BrowserRouter>
           </CartProvider>
