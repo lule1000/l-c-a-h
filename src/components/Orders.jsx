@@ -27,11 +27,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Orders() {
     const { orderItems } = useOrderContext();
-    console.log(orderItems)
     return orderItems.length === 0 ?
         <div className="text-center">
             <h1 className="mt-5">You haven`t orders...</h1>
-            <Link to={'/l-c-a-h'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
+            <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
         <TableContainer>
             <Table>

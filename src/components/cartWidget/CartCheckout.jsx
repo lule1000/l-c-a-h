@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "@mui/material";
 import { useCartContext } from "../context/CartContext";
 import { useOrderContext } from "../context/OrdersContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import './cartWidget.scss';
+import Box from '@mui/material/Box';
 import swal from 'sweetalert';
 import CustomizedTables from "./Table";
+import './cartWidget.scss';
 
 const CartCheckout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [disabledButton, setDisabledButton] = useState(false);
     const { cartItems, clearCart, removeItem, sendOrder, updateStock } = useCartContext();
     const { setOrderItems } = useOrderContext();
+    const controlInput = useMediaQuery('(min-width:650px)');
+    const controlForm = useMediaQuery('(min-width:500px)');
 
     useEffect(() => {
         let total = cartItems.reduce((total, product) => total + product.price * product.quantity, 0);
@@ -23,7 +27,7 @@ const CartCheckout = () => {
     return cartItems.length === 0 ?
         <div className="text-center">
             <h1 className="mt-5">You haven`t products in the cart...</h1>
-            <Link to={'/l-c-a-h'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
+            <Link to={'/'}><button className="mt-5 bg-dark text-white bgHover rounded">Back to Home</button></Link>
         </div> :
 
         <div className="m-4">
@@ -62,44 +66,76 @@ const CartCheckout = () => {
                 }}
             >
                 {({ errors }) => (
-                    <Form className="form m-5 d-flex flex-column border p-2">
-                        <div className="d-flex flex-column">
-                            <label className="ms-2">Name:</label>
-                            <Field
-                                placeholder="John Doe"
-                                label="Name:"
-                                type="text"
-                                name="name"
-                                className="w-25 m-1 form-control"
-                            />
-                            <ErrorMessage name="name" component={() => (<p className="ms-2 text-danger">{errors.name}</p>)} />
-                        </div>
-                        <div className="d-flex flex-column">
-                            <label className="ms-2">Email:</label>
-                            <Field
-                                placeholder="johndoe@hotmail.com"
-                                label="Email:"
-                                type="email"
-                                name="email"
-                                className="w-25 m-1 form-control"
-                            />
-                            <ErrorMessage name="email" component={() => (<p className="ms-2 text-danger">{errors.email}</p>)} />
-                        </div>
-                        <div className="d-flex flex-column">
-                            <label className="ms-2">Phone</label>
-                            <Field
-                                placeholder="011-1555439064"
-                                label="Phone:"
-                                type="tel"
-                                name="phone"
-                                className="w-25 m-1 form-control"
-                            />
-                            <ErrorMessage name="phone" component={() => (<p className="ms-2 text-danger">{errors.phone}</p>)} />
-                        </div>
-                        <div className="ms-1">
-                            <Button disabled={disabledButton} variant="contained" type="submit" endIcon={<SendIcon />}>Send</Button>
-                        </div>
-                    </Form>
+                    <Box sx={ controlForm ? { margin: 5 } : { margin: 2 } }>
+                        <Form className="form d-flex flex-column border p-2">
+                            <div className="d-flex flex-column">
+                                <label className="ms-2">Name:</label>
+                                {
+                                    controlInput ?
+                                        <Field
+                                            placeholder="John Doe"
+                                            label="Name:"
+                                            type="text"
+                                            name="name"
+                                            className="w-25 m-1 form-control"
+                                        /> :
+                                        <Field
+                                            placeholder="John Doe"
+                                            label="Name:"
+                                            type="text"
+                                            name="name"
+                                            className="w-75 m-1 form-control"
+                                        />
+                                }
+                                <ErrorMessage name="name" component={() => (<p className="ms-2 text-danger">{errors.name}</p>)} />
+                            </div>
+                            <div className="d-flex flex-column">
+                                <label className="ms-2">Email:</label>
+                                {
+                                    controlInput ?
+                                        <Field
+                                            placeholder="johndoe@hotmail.com"
+                                            label="Email:"
+                                            type="email"
+                                            name="email"
+                                            className="w-25 m-1 form-control"
+                                        /> :
+                                        <Field
+                                            placeholder="johndoe@hotmail.com"
+                                            label="Email:"
+                                            type="email"
+                                            name="email"
+                                            className="w-75 m-1 form-control"
+                                        />
+                                }
+                                <ErrorMessage name="email" component={() => (<p className="ms-2 text-danger">{errors.email}</p>)} />
+                            </div>
+                            <div className="d-flex flex-column">
+                                <label className="ms-2">Phone</label>
+                                {
+                                    controlInput ?
+                                        <Field
+                                            placeholder="011-1555439064"
+                                            label="Phone:"
+                                            type="tel"
+                                            name="phone"
+                                            className="w-25 m-1 form-control"
+                                        /> :
+                                        <Field
+                                            placeholder="011-1555439064"
+                                            label="Phone:"
+                                            type="tel"
+                                            name="phone"
+                                            className="w-75 m-1 form-control"
+                                        />
+                                }
+                                <ErrorMessage name="phone" component={() => (<p className="ms-2 text-danger">{errors.phone}</p>)} />
+                            </div>
+                            <div className="ms-1">
+                                <Button disabled={disabledButton} variant="contained" type="submit" endIcon={<SendIcon />}>Send</Button>
+                            </div>
+                        </Form>
+                    </Box>
                 )}
             </Formik>
         </div>

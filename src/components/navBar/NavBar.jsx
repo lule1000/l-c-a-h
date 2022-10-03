@@ -18,15 +18,19 @@ import Button from '@mui/material/Button';
 import './navBar.scss';
 const imgLogo = {
     alt: 'Imagen Logo',
-    imgUrl: '/l-c-a-h/imagesNav/simboloArbol.svg'
+    imgUrl: '/imagesNav/simboloArbol.svg'
+}
+const imgLogoNav = {
+    alt: 'Imagen Logo',
+    imgUrl: '/imagesNav/logoNav.webp'
 }
 
-const drawerWidth = 240;
+const drawerWidth = 140;
 
 const navItems = [
     {
         name: 'Home',
-        route: '/l-c-a-h'
+        route: '/'
     },
     {
         name: 'Brands',
@@ -34,29 +38,38 @@ const navItems = [
     },
     {
         name: 'Orders',
-        route: '/l-c-a-h/orders'
+        route: '/orders'
     },
     {
         name: 'Favorites',
-        route: '/l-c-a-h/favorites'
+        route: '/favorites'
     }
 ];
 
 function DrawerAppBar({ window, setDark, checked, dark }) {
     const [mobileOpen, setMobileOpen] = useState(false);
     const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
-    const showNavOptions = useMediaQuery('(min-width:600px)')
+    const showNavOptions = useMediaQuery('(min-width:600px)');
+    const showLogo = useMediaQuery('(max-width:400px)');
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
 
     const drawer = (
-        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-            <List>
+        <Box onClick={handleDrawerToggle}>
+            <List className='d-flex flex-column'>
+                {
+                    showLogo &&
+                    <Box className='d-flex justify-content-center mb-3'>
+                        <Link to={'/'}>
+                            <img src={imgLogoNav.imgUrl} alt={imgLogoNav.alt} />
+                        </Link>
+                    </Box>
+                }
                 {navItems.map(({ name, route }) => (
                     <ListItem key={name} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
+                        <ListItemButton className='ms-2' sx={{ textAlign: 'center' }}>
                             {
                                 dark ?
                                     <Link className='text-white text-decoration-none' to={route}>{name}</Link> :
@@ -85,9 +98,12 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Link to={'/l-c-a-h'} className="a_img m-2">
-                            <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
-                        </Link>
+                        {
+                            !showLogo &&
+                            <Link to={'/'} className="a_img m-2">
+                                <img className='logo' src={imgLogo.imgUrl} alt={imgLogo.alt} />
+                            </Link>
+                        }
                         {
                             showNavOptions &&
                             <Box>
@@ -111,7 +127,7 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                             {
                                 isAuthenticated ?
                                     <>
-                                        <li className="dropdown-item userLink"><Link to={'/l-c-a-h/profile'} className='text-decoration-none text-black' >Your Profile</Link></li>
+                                        <li className="dropdown-item userLink"><Link to={'/profile'} className='text-decoration-none text-black' >Your Profile</Link></li>
                                         <li><hr className="dropdown-divider" /></li>
                                         <li className="dropdown-item userLink" onClick={() => logout()}>Sign Out</li>
                                     </> :

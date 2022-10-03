@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import { useFavoriteContext } from "../context/FavoriteContext";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useAuth0 } from "@auth0/auth0-react";
+import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -14,7 +16,8 @@ const ItemDetail = ({ item }) => {
     const [amount, setAmount] = useState(0);
     const { addItem } = useCartContext();
     const { addFavorite } = useFavoriteContext();
-    const { isAuthenticated } = useAuth0()
+    const { isAuthenticated } = useAuth0();
+    const dFlex = useMediaQuery('(min-width:600px)');
 
     const onAdd = (amount) => {
         setAmount(amount);
@@ -28,11 +31,17 @@ const ItemDetail = ({ item }) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
-        <div className="border border-3 row g-0 m-5">
-            <div className="col-md-4">
-                <img src={imgUrl} className="img-fluid rounded-start border-end" alt={alt} />
-            </div>
-            <div className="col-md-8">
+        <Box className="border border-3 m-5" sx={dFlex ? { display: 'flex' } : { display: 'flex', flexDirection: 'column' }}>
+            {
+                dFlex ?
+                    <div className="border-end">
+                        <img src={imgUrl} className="img-fluid rounded-start" alt={alt} />
+                    </div> :
+                    <div className="border-bottom d-flex justify-content-center">
+                        <img src={imgUrl} className="img-fluid rounded-start" alt={alt} />
+                    </div>
+            }
+            <div className="">
                 <div className="card-body">
                     <h3 className="card-title">{name}</h3>
                     <h5>Description</h5>
@@ -54,7 +63,7 @@ const ItemDetail = ({ item }) => {
                     <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onClick={onAddFavorite} />
                 </div>
             </div>
-        </div>
+        </Box>
     );
 }
 

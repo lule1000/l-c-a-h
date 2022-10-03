@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
@@ -25,7 +25,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function CustomizedTables({ cartItems, clearCart, removeItem, setDisabledButton }) {
   return (
-    <TableContainer>
+    <TableContainer className='w-100'>
       <Table>
         <TableHead>
           <TableRow>
@@ -46,11 +46,11 @@ export default function CustomizedTables({ cartItems, clearCart, removeItem, set
                 <StyledTableCell align="center">${price * quantity}</StyledTableCell>
                 <StyledTableCell align="center"><DeleteIcon className='text-danger bgHover' onClick={() => removeItem(id)} /></StyledTableCell>
               </StyledTableRow>
-              {quantity > stock ?
+              {quantity > stock &&
                 <div className='d-flex justify-content-center'>
                   <p className='text-danger'>The product is out of available stock</p>
                   {setDisabledButton(true)}
-                </div> : <></>}
+                </div>}
             </>
           ))}
         </TableBody>
