@@ -48,7 +48,7 @@ const ItemDetail = ({ item }) => {
                     <p className="card-text">{description}</p>
                     <h3 className="card-text"><b>${price}</b></h3>
                     <p className="card-text"><b>Stock  ({stock} available)</b></p>
-                    {
+                    {/* {
                         isAuthenticated ?
                             amount === 0 ?
                                 <ItemCount stock={stock} onAdd={onAdd} /> :
@@ -58,6 +58,14 @@ const ItemDetail = ({ item }) => {
                                 </> :
                             <>
                                 <h3>You must be logged in if you want to buy</h3>
+                            </>
+                    } */}
+                    {
+                        amount === 0 ?
+                            <ItemCount stock={stock} onAdd={onAdd} /> :
+                            <>
+                                <h5><AiFillCheckCircle className="bgColor" /> {amount} products have been added to the cart</h5>
+                                <Link to={'/cart'}><button className="bg-primary text-white rounded btnQuantiti">Go to Checkout</button></Link>
                             </>
                     }
                     <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onClick={onAddFavorite} />

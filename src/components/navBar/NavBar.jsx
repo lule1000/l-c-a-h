@@ -116,7 +116,7 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                         }
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        {/* <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             {
                                 isAuthenticated ?
                                     <img className='userImg' src={user.picture} alt="" /> :
@@ -133,7 +133,7 @@ function DrawerAppBar({ window, setDark, checked, dark }) {
                                     </> :
                                     <li className="dropdown-item userLink" onClick={() => loginWithRedirect()}>Login</li>
                             }
-                        </ul>
+                        </ul> */}
 
                         <ButtonTheme setDark={setDark} checked={checked} />
                         <Cart />
